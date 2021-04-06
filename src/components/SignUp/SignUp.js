@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 import "./SignUp.css";
 
@@ -72,6 +73,7 @@ function SignUp() {
                 </p>
             )}
             <input type="submit" />
+            <h6 className="text-center text-light">Already Customer? <Link to="/login">Log In</Link> Here</h6>
             <div className="text-center">
                 <button className="btn btn-dark signIn-btn">Sign In With Google</button>
                 <button className="btn btn-dark signIn-btn">Sign In With Facebook</button>
