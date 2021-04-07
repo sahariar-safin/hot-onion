@@ -1,21 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import './DishCatagory.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Products from '../Products/Products';
 
-const DishCatagory = () => {
+const DishCategory = () => {
 
-    const [value, setValue] = useState(2);
-    const [label, setLabel] = useState("Dinner");
+    const [value, setValue] = useState(1);
+    const [label, setLabel] = useState("Lunch");
+    const [products, setProducts] = useState([]);
 
-    console.log(value);
     console.log(label);
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        setLabel(event.target.innerText)
+        setLabel(event.target.innerHTML)
     };
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/products?category=${ label }`)
+            .then(function (response) {
+                const data = response.data;
+                setProducts(data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, [label])
 
     return (
         <div className="text-center">
@@ -32,11 +45,9 @@ const DishCatagory = () => {
                     <Tab label="Dinner"></Tab>
                 </Tabs>
             </Paper>
-            <div>
-                <h1>{label  }</h1>
-            </div>
+            <Products products={products}></Products>
         </div>
     );
 };
 
-export default DishCatagory;
+export default DishCategory;

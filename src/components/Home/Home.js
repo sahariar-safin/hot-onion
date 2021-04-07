@@ -1,5 +1,5 @@
 import React from 'react';
-import DishCatagory from '../DishCatagory/DishCatagory';
+import DishCategory from '../DishCatagory/DishCatagory';
 import './Home.css';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
                     </div>
                 </form>
             </div>
-            <DishCatagory></DishCatagory>
+            <DishCategory></DishCategory>
         </div>
     );
 };
