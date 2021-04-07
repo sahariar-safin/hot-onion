@@ -1,5 +1,7 @@
 import React from 'react';
+import { Route } from 'react-router';
 import DishCategory from '../DishCatagory/DishCatagory';
+import Product from '../Product/Product';
 import './Home.css';
 
 const Home = () => {

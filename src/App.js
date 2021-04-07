@@ -10,6 +10,7 @@ import {
 import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
+import Product from './components/Product/Product';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/dish/:id">
+            <Product></Product>
           </Route>
           <Route path="/">
             <Home></Home>

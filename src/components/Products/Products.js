@@ -1,19 +1,20 @@
 import React, { createContext, useState } from 'react';
+import { useHistory } from 'react-router';
 import './Products.css';
 
 const Products = (props) => {
+    const history = useHistory();
     const products = props.products;
     const [productId, setProductId] = useState();
 
     const handleProductView = (id) => {
-        console.log(id);
-        
+        history.push(`/dish/${ (id).split('"')[1] }`);
     }
 
     return (
         <div className="d-flex flex-wrap justify-content-evenly mt-4">
             {products.map(product =>
-                <div className="card" onClick={() => handleProductView(`'${ product._id }'`)}>
+                <div className="card" onClick={() => handleProductView(`"${ product._id }"`)}>
                     <img src={product.imgURL} alt={product.Name} />
                     <h3 className="mt-2 mb-2">{product.Name}</h3>
                     <h2>${product.price}</h2>
