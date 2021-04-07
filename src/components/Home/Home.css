@@ -4,3 +4,14 @@
 .search button {
     margin: 0px ;
 }
+.search-section{
+    background-image: url('./bannerbackground.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 111% 100%;
+    height: 400px;
+    align-items: center !important;
+}
+h1{
+    border: none;
+}

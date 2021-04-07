@@ -50,7 +50,7 @@ function SignUp() {
                 {...register("password", { required: "Password is required!" })}
             />
             {errors.password && (
-                <p style={{ color: "white" }}>{errors.password.message}</p>
+                <p style={{ color: "black" }}>{errors.password.message}</p>
             )}
 
             <label>Confirm Password: </label>
@@ -68,12 +68,12 @@ function SignUp() {
                 })}
             />
             {errors.passwordConfirmation && (
-                <p style={{ color: "white" }}>
+                <p style={{ color: "black" }}>
                     {errors.passwordConfirmation.message}
                 </p>
             )}
             <input type="submit" />
-            <h6 className="text-center text-light">Already Customer? <Link to="/login">Log In</Link> Here</h6>
+            <h6 className="text-center text-dark">Already Customer? <Link to="/login">Log In</Link> Here</h6>
             <div className="text-center">
                 <button className="btn btn-dark signIn-btn">Sign In With Google</button>
                 <button className="btn btn-dark signIn-btn">Sign In With Facebook</button>

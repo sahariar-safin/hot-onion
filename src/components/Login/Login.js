@@ -40,7 +40,7 @@ const Login = () => {
             />
             {errors.password && <p>{errors.password.message}</p>}
             <input type="submit" />
-            <h6 className="text-center text-light">New Customer? <Link to="/signup">Sign Up</Link> Here</h6>
+            <h6 className="text-center text-dark">New Customer? <Link to="/signup">Sign Up</Link> Here</h6>
             <div className="text-center">
                 <button className="btn btn-dark signIn-btn">Sign In With Google</button>
                 <button className="btn btn-dark signIn-btn">Sign In With Facebook</button>
