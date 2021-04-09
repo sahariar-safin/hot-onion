@@ -38,7 +38,7 @@ function App() {
               <Login></Login>
             </Route>
             <Route path="/checkout">
-              <CheckOut></CheckOut>
+              <CheckOut cart={cart}></CheckOut>
             </Route>
             <Route path="/dish/:id">
               <Product handleCart={handleCart}></Product>

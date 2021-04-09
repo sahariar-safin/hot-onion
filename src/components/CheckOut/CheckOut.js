@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../App';
 
-const CheckOut = () => {
+const CheckOut = (props) => {
+    console.log(props.cart);
+
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const {
@@ -13,13 +15,20 @@ const CheckOut = () => {
     } = useForm({
         mode: "onChange"
     });
+
     const onSubmit = (data) => {
         console.log(data);
     };
+    const onAddress = (data) => {
+        document.getElementById("toAddress").innerText = data.Address;
+    };
+
     return (
         <div className="row mt-5">
             <div className="col-6">
-                <form className="signup" onSubmit={handleSubmit(onSubmit)}>
+                <form className="signup" onChange={handleSubmit(onAddress)} onSubmit={handleSubmit(onSubmit)}>
+
+                    <label htmlFor="Name"></label>
                     <input
                         defaultValue={loggedInUser.displayName}
                         placeholder="Your Name"
@@ -28,6 +37,8 @@ const CheckOut = () => {
                         })}
                     />
                     {errors.Name && <p>{errors.Name.message}</p>}
+
+                    <label htmlFor="Address"></label>
                     <input
                         placeholder="Your Address"
                         {...register("Address", {
@@ -36,6 +47,7 @@ const CheckOut = () => {
                     />
                     {errors.Address && <p>{errors.Address.message}</p>}
 
+                    <label htmlFor="FlatNo"></label>
                     <input
                         placeholder="Flat, suite or floor"
                         {...register("FlatNo", {
@@ -44,6 +56,7 @@ const CheckOut = () => {
                     />
                     {errors.FlatNo && <p>{errors.FlatNo.message}</p>}
 
+                    <label htmlFor="instruction"></label>
                     <input
                         type="text"
                         placeholder="Add delivery instruction"
@@ -56,7 +69,12 @@ const CheckOut = () => {
                 </form>
             </div>
             <div className="col-6">
+                <h5>From <strong>Gulshan Plaza Restaura GPR</strong></h5>
+                <p>Arriving in 20-30 min</p>
+                <h5 id="toAddress"></h5>
+                {
 
+                }
             </div>
         </div>
     );
