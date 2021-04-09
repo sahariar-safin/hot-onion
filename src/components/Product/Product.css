@@ -1,0 +1,12 @@
+.quantity input{
+    margin: auto 0px;
+}
+.quantity button {
+    margin: 0 !important;
+}
+.addCraft{
+    border-radius: 30px;
+}
+img{
+    width: 100%;
+}

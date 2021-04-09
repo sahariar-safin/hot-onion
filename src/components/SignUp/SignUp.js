@@ -19,7 +19,7 @@ function SignUp() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="signup" onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="Name">Name</label>
             <input
                 placeholder="Your Name"

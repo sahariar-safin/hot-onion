@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useHistory } from 'react-router';
+import { CartContext } from '../Product/Product';
 import './Products.css';
 
 const Products = (props) => {
@@ -7,9 +8,11 @@ const Products = (props) => {
     const products = props.products;
     const [productId, setProductId] = useState();
 
+
     const handleProductView = (id) => {
         history.push(`/dish/${ (id).split('"')[1] }`);
     }
+
 
     return (
         <div className="d-flex flex-wrap justify-content-evenly mt-4">

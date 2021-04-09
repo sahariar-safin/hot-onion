@@ -16,7 +16,7 @@ max-width: 500px;
 margin: 0 auto;
 }
 
-h1 {
+.signup h1 {
 font-weight: 100;
 color: black;
 text-align: center;
@@ -30,11 +30,11 @@ max-width: 400px;
 margin: 0 auto;
 }
 
-p {
+.signup p {
 color: #bf1650;
 }
 
-p::before {
+.signup p::before {
 display: inline;
 content: "⚠ ";
 }

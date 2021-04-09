@@ -15,7 +15,7 @@ const Login = () => {
         console.log(data);
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="login" onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">Email</label>
             <input
                 placeholder="Your email"
