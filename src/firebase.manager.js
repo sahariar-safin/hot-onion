@@ -10,15 +10,15 @@ export const handleGoogleSignIn = () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(googleProvider)
         .then(res => {
-            const { displayName, photoURL, email } = res.user;
-            const signedInUser = {
-                isSignedIn: true,
-                name: displayName,
-                email: email,
-                photo: photoURL,
-                success: true
-            };
-            return signedInUser;
+            const user = res.user;
+            // const signedInUser = {
+            //     isSignedIn: true,
+            //     name: displayName,
+            //     email: email,
+            //     photo: photoURL,
+            //     success: true
+            // };
+            return user;
         })
         .catch(err => {
             console.log(err);
