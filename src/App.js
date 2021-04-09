@@ -11,29 +11,41 @@ import SignUp from './components/SignUp/SignUp';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import Product from './components/Product/Product';
+import { createContext, useState } from 'react';
+
+export const UserContext = createContext();
 
 function App() {
-  sessionStorage.setItem("id", [])
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const [cart, setCart] = useState([]);
+  const handleCart = (id) => {
+    const newCart = [...cart, id];
+    setCart(newCart)
+    sessionStorage.setItem("cart", JSON.stringify(newCart))
+  }
+
   return (
-    <div className="container">
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route path="/signup">
-            <SignUp></SignUp>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="/dish/:id">
-            <Product></Product>
-          </Route>
-          <Route path="/">
-            <Home></Home>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
+      <div className="container">
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route path="/signup">
+              <SignUp></SignUp>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/dish/:id">
+              <Product handleCart={handleCart}></Product>
+            </Route>
+            <Route path="/">
+              <Home></Home>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </UserContext.Provider>
   );
 }
 

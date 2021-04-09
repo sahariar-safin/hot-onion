@@ -1,3 +1,5 @@
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
@@ -5,7 +7,8 @@ import { useParams } from 'react-router';
 import './Product.css';
 
 
-const Product = () => {
+const Product = (props) => {
+    const handleCart = props.handleCart;
     const { id } = useParams();
     const [product, setProduct] = useState([]);
     const [quantity, setQuantity] = useState({
@@ -25,12 +28,6 @@ const Product = () => {
                 console.log(error);
             })
     }, [])
-    const [cart, setCart] = useState([]);
-    const handleCart = (id) => {
-        const newCart = [...cart, id];
-        setCart(newCart);
-        sessionStorage.setItem("id", JSON.stringify(newCart))
-    }
 
 
     return (
@@ -57,7 +54,7 @@ const Product = () => {
                         }} className="btn btn-light from-append">+</button>
                     </div>
                 </div>
-                <button onClick={() => handleCart(`${ product._id }`)} className="btn btn-danger addCraft">Add</button>
+                <button onClick={() => handleCart(`${ product._id }`)} className="btn btn-danger addCraft"> <FontAwesomeIcon className="cart" icon={faShoppingCart}></FontAwesomeIcon>Add</button>
             </div>
             <div className="col-md-6 col-sm-12 col-xs-12">
                 <img src={product.imgURL} alt="" />

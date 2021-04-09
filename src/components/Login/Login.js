@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
+import { handleFbSignIn, handleGoogleSignIn } from '../../firebase.manager';
 
 const Login = () => {
+    const [user, setUser] = useState({});
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const {
         register,
         getValues,
@@ -14,6 +18,32 @@ const Login = () => {
     const onSubmit = (data) => {
         console.log(data);
     };
+
+    const googleSignIn = () => {
+        handleGoogleSignIn()
+            .then(res => {
+                handleResponse(res, true);
+            })
+    }
+
+    const fbSignIn = () => {
+        handleFbSignIn()
+            .then(res => {
+                handleResponse(res, true);
+            })
+    }
+
+    const handleResponse = (res, redirect) => {
+        setUser(res);
+        setLoggedInUser(res);
+        // if (redirect) {
+        //     history.replace(from);
+        // }
+    }
+    console.log(user);
+    console.log(loggedInUser);
+
+
     return (
         <form className="login" onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="email">Email</label>
@@ -42,8 +72,8 @@ const Login = () => {
             <input type="submit" />
             <h6 className="text-center text-dark">New Customer? <Link to="/signup">Sign Up</Link> Here</h6>
             <div className="text-center">
-                <button className="btn btn-dark signIn-btn">Sign In With Google</button>
-                <button className="btn btn-dark signIn-btn">Sign In With Facebook</button>
+                <button onClick={googleSignIn} className="btn btn-dark signIn-btn">Sign In With Google</button>
+                <button onClick={fbSignIn} className="btn btn-dark signIn-btn">Sign In With Facebook</button>
             </div>
         </form>
     );

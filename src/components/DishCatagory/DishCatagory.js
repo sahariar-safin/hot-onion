@@ -12,6 +12,7 @@ const DishCategory = () => {
     const [value, setValue] = useState(1);
     const [label, setLabel] = useState("Lunch");
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
 
     console.log(label);
     const handleChange = (event, newValue) => {
@@ -29,6 +30,7 @@ const DishCategory = () => {
                 console.log(error);
             })
     }, [label])
+
 
     return (
         <div className="text-center">
