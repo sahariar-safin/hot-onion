@@ -28,7 +28,31 @@ const CheckOut = () => {
                         })}
                     />
                     {errors.Name && <p>{errors.Name.message}</p>}
+                    <input
+                        placeholder="Your Address"
+                        {...register("Address", {
+                            required: "this is a required"
+                        })}
+                    />
+                    {errors.Address && <p>{errors.Address.message}</p>}
 
+                    <input
+                        placeholder="Flat, suite or floor"
+                        {...register("FlatNo", {
+                            required: "this is a required"
+                        })}
+                    />
+                    {errors.FlatNo && <p>{errors.FlatNo.message}</p>}
+
+                    <input
+                        type="text"
+                        placeholder="Add delivery instruction"
+                        {...register("instruction", {
+                            required: "this is a required"
+                        })}
+                    />
+                    {errors.instruction && <p>{errors.instruction.message}</p>}
+                    <input type="submit" />
                 </form>
             </div>
             <div className="col-6">
