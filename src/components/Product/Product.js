@@ -21,7 +21,6 @@ const Product = (props) => {
         axios.get(`http://localhost:5000/product?id=${ id }`)
             .then(function (response) {
                 const data = response.data[0];
-                console.log(data);
                 setProduct(data);
             })
             .catch(function (error) {

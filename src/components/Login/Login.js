@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { UserContext } from '../../App';
 import { handleFbSignIn, handleGoogleSignIn } from '../../firebase.manager';
 
@@ -15,6 +15,10 @@ const Login = () => {
     } = useForm({
         mode: "onChange"
     });
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
     const onSubmit = (data) => {
         console.log(data);
     };
@@ -36,12 +40,10 @@ const Login = () => {
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLoggedInUser(res);
-        // if (redirect) {
-        //     history.replace(from);
-        // }
+        if (redirect) {
+            history.replace(from);
+        }
     }
-    console.log(user);
-    console.log(loggedInUser);
 
 
     return (

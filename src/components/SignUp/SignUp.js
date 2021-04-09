@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../App";
 import { handleFbSignIn, handleGoogleSignIn } from "../../firebase.manager";
 
 import "./SignUp.css";
 
 function SignUp() {
+    let history = useHistory();
+    let location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [user, setUser] = useState({});
     const {
@@ -39,12 +43,10 @@ function SignUp() {
     const handleResponse = (res, redirect) => {
         setUser(res);
         setLoggedInUser(res);
-        // if (redirect) {
-        //     history.replace(from);
-        // }
+        if (redirect) {
+            history.replace(from);
+        }
     }
-    console.log(user);
-    console.log(loggedInUser);
 
     return (
         <form className="signup" onSubmit={handleSubmit(onSubmit)}>

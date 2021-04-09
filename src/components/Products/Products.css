@@ -1,17 +1,17 @@
-.card img{
+.productCard img{
     width: 200px;
     margin: 0px auto;
 }
-.card{
+.productCard{
     width: 350px;
     border: none;
     padding: 10px;
     margin: 7px;
 }
-.card h3{
+.productCard h3{
     font-size: 18px;
 }
-.card:hover{
+.productCard:hover{
     box-shadow: 0px 0px 6px 1px grey;
     border: .5px solid lightgray;
     transition: 1s;

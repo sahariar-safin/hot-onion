@@ -1,0 +1,15 @@
+.cartProduct img{
+    width: 150px;
+    height: 150px;
+    justify-content: space-evenly;
+}
+.productDetails{
+    width: 150px;
+}
+.cartProduct{
+    padding: 10px !important;
+    flex-direction: row !important;
+}
+#counter{
+    width: 30px;
+}

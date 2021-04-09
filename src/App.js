@@ -13,9 +13,10 @@ import Home from './components/Home/Home';
 import Product from './components/Product/Product';
 import { createContext, useState } from 'react';
 import CheckOut from './components/CheckOut/CheckOut';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
-
+sessionStorage.setItem("cart", JSON.stringify([]))
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cart, setCart] = useState([]);
@@ -37,9 +38,9 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <Route path="/checkout">
+            <PrivateRoute path="/checkout">
               <CheckOut cart={cart}></CheckOut>
-            </Route>
+            </PrivateRoute>
             <Route path="/dish/:id">
               <Product handleCart={handleCart}></Product>
             </Route>

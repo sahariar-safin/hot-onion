@@ -17,7 +17,7 @@ const Products = (props) => {
     return (
         <div className="d-flex flex-wrap justify-content-evenly mt-4">
             {products.map(product =>
-                <div className="card" onClick={() => handleProductView(`"${ product._id }"`)}>
+                <div className="card productCard" onClick={() => handleProductView(`"${ product._id }"`)}>
                     <img src={product.imgURL} alt={product.Name} />
                     <h3 className="mt-2 mb-2">{product.Name}</h3>
                     <h2>${product.price}</h2>
