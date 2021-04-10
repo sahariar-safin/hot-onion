@@ -20,8 +20,11 @@ sessionStorage.setItem("cart", JSON.stringify([]))
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const [cart, setCart] = useState([]);
-  const handleCart = (id) => {
-    const newCart = [...cart, id];
+  const handleCart = (id, quantity) => {
+    const newCart = [...cart, {
+      id: id,
+      quantity: quantity.quantity
+    }];
     setCart(newCart)
     sessionStorage.setItem("cart", JSON.stringify(newCart))
   }

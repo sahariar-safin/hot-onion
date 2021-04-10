@@ -8,6 +8,7 @@ const CheckOut = (props) => {
     const cart = props.cart;
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [price, setPrice] = useState(0);
 
     const {
         register,
@@ -71,7 +72,7 @@ const CheckOut = (props) => {
                 <p>Arriving in 20-30 min</p>
                 <h5 id="toAddress"></h5>
                 {
-                    cart.map(cart => <CartProduct cart={cart}></CartProduct>)
+                    cart.map(cart => <CartProduct price={price} setPrice={setPrice} cart={cart}></CartProduct>)
                 }
             </div>
         </div>

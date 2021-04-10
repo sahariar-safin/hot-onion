@@ -53,7 +53,7 @@ const Product = (props) => {
                         }} className="btn btn-light from-append">+</button>
                     </div>
                 </div>
-                <button onClick={() => handleCart(`${ product._id }`)} className="btn btn-danger addCraft"> <FontAwesomeIcon className="cart" icon={faShoppingCart}></FontAwesomeIcon>Add</button>
+                <button onClick={() => handleCart(product._id, quantity)} className="btn btn-danger addCraft"> <FontAwesomeIcon className="cart" icon={faShoppingCart}></FontAwesomeIcon>Add</button>
             </div>
             <div className="col-md-6 col-sm-12 col-xs-12">
                 <img src={product.imgURL} alt="" />
