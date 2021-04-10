@@ -9,7 +9,7 @@ const CartProduct = (props) => {
         quantity: quantity
     });
     useEffect(() => {
-        axios.get(`http://localhost:5000/product?id=${ id }`)
+        axios.get(`https://fathomless-bayou-79225.herokuapp.com/product?id=${ id }`)
             .then(function (response) {
                 const data = response.data[0];
                 setProduct(data);
@@ -36,7 +36,7 @@ const CartProduct = (props) => {
                                     });
                             }
                         }} className="btn btn-light">-</button>
-                        <input id='counter' value={cartQuantity.quantity} type="text" name="quantity" className="w-25 text-center form-control" id="" />
+                        <input value={cartQuantity.quantity} type="text" name="quantity" className="w-25 text-center form-control" id="" />
                         <button onClick={() => {
                             setCartQuantity({
                                 quantity: cartQuantity.quantity + 1

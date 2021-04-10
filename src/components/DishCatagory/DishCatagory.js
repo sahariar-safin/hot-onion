@@ -21,7 +21,7 @@ const DishCategory = () => {
     };
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/products?category=${ label }`)
+        axios.get(`https://fathomless-bayou-79225.herokuapp.com/products?category=${ label }`)
             .then(function (response) {
                 const data = response.data;
                 setProducts(data);

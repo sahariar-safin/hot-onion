@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import './Product.css';
 
@@ -18,7 +19,7 @@ const Product = (props) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/product?id=${ id }`)
+        axios.get(`https://fathomless-bayou-79225.herokuapp.com/product?id=${ id }`)
             .then(function (response) {
                 const data = response.data[0];
                 setProduct(data);
@@ -53,7 +54,7 @@ const Product = (props) => {
                         }} className="btn btn-light from-append">+</button>
                     </div>
                 </div>
-                <button onClick={() => handleCart(product._id, quantity)} className="btn btn-danger addCraft"> <FontAwesomeIcon className="cart" icon={faShoppingCart}></FontAwesomeIcon>Add</button>
+                <Link to="/checkout"> <button onClick={() => handleCart(product._id, quantity)} className="btn btn-danger addCraft"> <FontAwesomeIcon className="cart" icon={faShoppingCart}></FontAwesomeIcon>Add</button></Link>
             </div>
             <div className="col-md-6 col-sm-12 col-xs-12">
                 <img src={product.imgURL} alt="" />

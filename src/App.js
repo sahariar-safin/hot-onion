@@ -28,7 +28,7 @@ function App() {
     setCart(newCart)
     sessionStorage.setItem("cart", JSON.stringify(newCart))
   }
-
+  
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]} >
       <div className="container">
